@@ -1,0 +1,13 @@
+{"resultCode":0,"resultInfos":[
+  {"hotelCode":"MSG001","hotelGroupCode":"MSG",
+    "productTypeList":[
+    {"breakfastNum":2,"cancelFlag":"F","cancelPolicyCode":"DT","guaranteeCode":"CR","guaranteeFlag":"FU","minDays":1,"preTimeMin":24,
+      "productBases":[
+      {"beginDate":"2015-11-01","channel":"derby","endDate":"2015-11-13","hotelCode":"MSG001","hotelGroupCode":"MSG","id":0,"name":"���������׷�_2015�ػ�","pmsChannelCode":"WEB","pmsMarketCode":"OTA","pmsRateCode":"RACK_WEB","pmsSrcCode":"WEB","productCode":"MSG_MSG001_derby_2015TESTD001_BDS","productType":"MSG_MSG001_derby_2015TESTD001","roomDescript":"���������׷�","roomType":"BDS"},
+      {"beginDate":"2015-11-01","channel":"derby","endDate":"2015-11-13","hotelCode":"MSG001","hotelGroupCode":"MSG","id":0,"name":"�������̴󴲷�_2015�ػ�","pmsChannelCode":"WEB","pmsMarketCode":"OTA","pmsRateCode":"RACK_WEB","pmsSrcCode":"WEB","productCode":"MSG_MSG001_derby_2015TESTD001_DNK","productType":"MSG_MSG001_derby_2015TESTD001","roomDescript":"�������̴󴲷�","roomType":"DNK"},
+      {"beginDate":"2015-11-01","channel":"derby","endDate":"2015-11-13","hotelCode":"MSG001","hotelGroupCode":"MSG","id":0,"name":"�������̴󴲷�_2015�ػ�","pmsChannelCode":"WEB","pmsMarketCode":"OTA","pmsRateCode":"RACK_WEB","pmsSrcCode":"WEB","productCode":"MSG_MSG001_derby_2015TESTD001_ENK","productType":"MSG_MSG001_derby_2015TESTD001","roomDescript":"�������̴󴲷�","roomType":"ENK"}],
+      "productType":"MSG_MSG001_derby_2015TESTD001","productTypeDescript":"2015�ػ�"},
+      {"breakfastNum":2,"cancelFlag":"F","cancelPolicyCode":"DT","guaranteeCode":"CR","guaranteeFlag":"FU","minDays":1,"preTimeMin":24,
+        "productBases":[
+          {"beginDate":"2015-11-01","channel":"hworld","endDate":"2015-11-13","hotelCode":"MSG001","hotelGroupCode":"MSG","id":0,"name":"���������׷�_2015�ػ�","pmsChannelCode":"WEB","pmsMarketCode":"OTA","pmsRateCode":"RACK_WEB","pmsSrcCode":"WEB","productCode":"MSG_MSG001_hworld_2015TESTH001_BDS","productType":"MSG_MSG001_hworld_2015TESTH001","roomDescript":"���������׷�","roomType":"BDS"},
+          {"beginDate":"2015-11-01","channel":"hworld","endDate":"2015-11-13","hotelCode":"MSG001","hotelGroupCode"

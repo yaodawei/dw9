@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+	version="1.8">
+
+	<pre-processing-commands>
+		<delete-jobs-in-group>*</delete-jobs-in-group>  <!-- clear all jobs in scheduler -->
+		<delete-triggers-in-group>*</delete-triggers-in-group> <!-- clear all triggers in scheduler -->
+	</pre-processing-commands>
+
+	<processing-directives>
+		<!-- if there are any jobs/trigger in scheduler of same name (as in this file), overwrite them -->
+		<overwrite-existing-data>true</overwrite-existing-data>
+		<!-- if there are any jobs/trigger in scheduler of same name (as in this file), and over-write is false, ignore them rather 
+			then generating an error -->
+		<ignore-duplicates>false</ignore-duplicates>
+	</processing-directives>
+
+	<schedule>
+		
+		<job>
+			<name>DayEndProcessJob</name>
+			<group>GroupOfDayEndProcessJob</group>
+			<description>This is the description of DayEndProcessJob</description>
+			<job-class>com.cup.fssp.commons.scheduler.DayEndJob</job-class>
+			<durability>false</durability>
+			<recover>true</recover>
+		</job>
+	
+		<job>
+			<name>PayVerificationJob</name>
+			<group>GroupOfPayVerificationJob</group>
+			<description>This is the description of PayVerificationJob</description>
+			<job-class>com.cup.fssp.commons.scheduler.PayVerificationJob</job-class>
+			<durability>false</durability>
+			<recover>true</recover>
+		</job>
+		<job>
+			<name>PayAcctGetTradeDetailAndBalanceJob</name>
+			<group>GroupOfPayAcctGetTradeDetailAndBalanceJob</group>
+			<description>This is the description of PayAcctGetTradeDetailAndBalanceJob</description>
+			<job-class>com.cup.fssp.commons.scheduler.PayAcctGetTradeDetailAndBalanceJob</job-class>
+			<durability>false</durability>
+			<recover>true</recover>
+		</job>
+        <job>
+			<name>BocPayJob</name>
+			<group>GroupOfPayBocPayJob</group>
+			<description>This is the description of BocPayJob</description>
+			<job-class>com.cup.fssp.commons.scheduler.BocPayJob</job-class>
+			<durability>false</durability>
+			<recover>true</recover>
+		</job>
+		<job>
+			<name>SpdbPayJob</name>
+			<group>GroupOfSpdbPayJob</group>
+			<description>This is the description of SpdbPayJob</description>
+			<job-class>com.cup.fssp.commons.scheduler.SpdbPayJob</job-class>
+			<durability>false</durability>
+			<recover>true</recover>
+		</job>
+		<job>
+			<name>CreditAutoHandleJob</name>
+			<group>CreditAutoHandleJob</group>
+			<description>This is the description of CreditAutoHandleJob</description>
+			<job-class>com.cup.fssp.commons.scheduler.CreditAutoHandleJob</job-class>
+			<durability>false</durability>
+			<recover>true</recover>
+		</job>
+		<!--日终   每天20:30:00触发-->
+		<trigger>
+			<cron>
+				<name>CronTriggerDayEndProcessJob</name>
+				<group>GroupOfDayEndProcessJob</group>
+				<job-name>DayEndProcessJob</job-name>
+				<job-group>GroupOfDayEndProcessJob</job-group>
+				<cron-expression>0 30 20 * * ?</cron-expression>
+			</cron>
+		</trigger>
+
+        <!--支付核销         每天8点到17点59分之间，每11分钟触发一次-->
+		<trigger>
+			<cron>
+				<name>CronTrigger20AtEveryMinute</name>
+				<group>GroupOfPayVerificationJob</group>
+				<job-name>PayVerificationJob</job-name>
+				<job-group>GroupOfPayVerificationJob</job-group>
+				<cron-expression>0 0/11 8-17 * * ?</cron-expression>
+			</cron>
+		</trigger>
+		<!--银行交易明细记录查询   每天8点到17点59分之间，每13分钟触发一次-->
+		<trigger>
+			<cron>
+				<name>CronTrigger30AtEveryMinute</name>
+				<group>GroupOfPayAcctGetTradeDetailAndBalanceJob</group>
+				<job-name>PayAcctGetTradeDetailAndBalanceJob</job-name>
+				<job-group>GroupOfPayAcctGetTradeDetailAndBalanceJob</job-group>
+				<cron-expression>0 0/13 8,9,10,11,12,13,14,15,16,17,23 * * ?</cron-expression>
+			</cron>
+		</trigger>
+		<!--中行支付	每天8点到17点59分之间，每7分钟触发一次 -->
+		<trigger>
+			<cron>
+				<name>CronTrigger10AtEveryMinute</name>
+				<group>GroupOfPayBocPayJob</group>
+				<job-name>BocPayJob</job-name>
+				<job-group>GroupOfPayBocPayJob</job-group>
+				<cron-expression>0 0/7 8-17 * * ?</cron-expression>
+			</cron>
+		</trigger> 
+		<!-- 浦发支付  每天8点到17点59分之间，每7分钟触发一次-->
+		<trigger>
+			<cron>
+				<name>CronTrigger10AtEveryMinute</name>
+				<group>GroupOfSpdbPayJob</group>
+				<job-name>SpdbPayJob</job-name>
+				<job-group>GroupOfSpdbPayJob</job-group>
+				<cron-expression>0 0/7 8-17 * * ?</cron-expression>
+			</cron>
+		</trigger>
+		<!--来帐自动处理	 每天8点到17点59分之间，每17分钟触发一次  -->
+		<trigger>
+			<cron>
+				<name>CronTrigger05AtEveryMinute</name>
+				<group>CreditAutoHandleJob</group>
+				<job-name>CreditAutoHandleJob</job-name>
+				<job-group>CreditAutoHandleJob</job-group>
+				<cron-expression>0 0/17 8-17 * * ?</cron-expression>
+			</cron>
+		</trigger> 
+	</schedule>
+
+</job-scheduling-data>
